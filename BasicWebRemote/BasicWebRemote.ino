@@ -1,3 +1,44 @@
+#include <ir_Coolix.h>
+#include <ir_Sanyo.h>
+#include <ir_Hitachi.h>
+#include <ir_Panasonic.h>
+#include <ir_Vestel.h>
+#include <ir_Airwell.h>
+#include <ir_MitsubishiHeavy.h>
+#include <ir_Midea.h>
+#include <ir_Gree.h>
+#include <IRtimer.h>
+#include <ir_Delonghi.h>
+#include <ir_Samsung.h>
+#include <ir_Sharp.h>
+#include <ir_Kelvinator.h>
+#include <ir_NEC.h>
+#include <ir_Electra.h>
+#include <IRsend.h>
+#include <IRac.h>
+#include <ir_Daikin.h>
+#include <ir_Carrier.h>
+#include <IRremoteESP8266.h>
+#include <i18n.h>
+#include <ir_Trotec.h>
+#include <ir_Tcl.h>
+#include <ir_Goodweather.h>
+#include <ir_Corona.h>
+#include <ir_Neoclima.h>
+#include <ir_Toshiba.h>
+#include <ir_Teco.h>
+#include <ir_Magiquest.h>
+#include <ir_Argo.h>
+#include <ir_Haier.h>
+#include <IRrecv.h>
+#include <ir_LG.h>
+#include <IRutils.h>
+#include <ir_Whirlpool.h>
+#include <ir_Amcor.h>
+#include <ir_Fujitsu.h>
+#include <ir_Mitsubishi.h>
+#include <IRtext.h>
+
 #include <ESP8266WiFi.h>
 #include <WiFiClient.h>
 #include <ESP8266WebServer.h>
@@ -12,8 +53,8 @@
 
 IRsend irsend(IR_SEND_PIN);
 
-const char* ssid = "SSID";
-const char* password = "password";
+const char* ssid = "";
+const char* password = "";
 
 ESP8266WebServer server(80);
 
@@ -42,11 +83,20 @@ void handleRoot() {
   website = website + "  </head>\n";
   website = website + "  <body>\n";
   website = website + "    <div class=\"container-fluid\">\n";
+  // -------------------------Test --------------------
+//  website = website + ""
+  website = website + " <div class=\"tab\"> "
+  website = website + "<button class="tablinks" onclick="openCity(event, 'London')">London</button>"
+  website = website + "<button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>"
+  website = website + ""
+  website = website + "</div>"
+  
   // ------------------------- Power Controls --------------------------
   website = website + rowDiv;
-  website = website + generateButton("col-xs-4", "tvpower","TV Power", "tvpower");
-  website = website + generateButton("col-xs-4", "sspower","SS Power", "sspower");
-  website = website + generateButton("col-xs-4", "satpower","Sat Power", "satpower");
+  website = website + generateButton("col-xs-3", "tvpower","TV Power", "tvpower");
+  website = website + generateButton("col-xs-3", "switchon","Switch On", "switchon");
+  website = website + generateButton("col-xs-3", "switchoff","Switch Off", "switchoff");
+  website = website + generateButton("col-xs-3", "satpower","Sat Power", "satpower");
   website = website + endDiv;
   // ------------------------- Channel Controls --------------------------
   website = website + rowDiv;
@@ -58,10 +108,10 @@ void handleRoot() {
   website = website + endDiv;
   // ------------------------- Volume Controls --------------------------
   website = website + rowDiv;
-  website = website + generateButton("col-xs-12", "up","Vol Up", "up");
+  website = website + generateButton("col-xs-12", "up","Switch Up", "up");
   website = website + endDiv;
   website = website + rowDiv;
-  website = website + generateButton("col-xs-12", "down","Vol Down", "down");
+  website = website + generateButton("col-xs-12", "down","Switch Down", "down");
   website = website + endDiv;
   // ------------------------- Satelite Controls --------------------------
   // Not working well
@@ -79,7 +129,8 @@ void handleRoot() {
   website = website + generateButton("col-xs-12", "chromecast","Chromecast", "chromecast");
   website = website + endDiv;
   website = website + rowDiv;
-  website = website + generateButton("col-xs-12", "togglesource","TV Source", "togglesource");
+//  website = website + generateButton("col-xs-12", "togglesource","TV Source", "togglesource");
+  website = website + generateButton("col-xs-12", "tvsource","TV Source", "tvsource");
   website = website + endDiv;
   website = website + endDiv;
   website = website + "    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>\n";
@@ -135,26 +186,32 @@ void setup(void){
   server.on("/", handleRoot);
 
   server.on("/down", [](){
-    Serial.println("Sorround Sound Down");
-    irsend.sendNEC(0x4BB6C03F, 32);
-    server.send(200, "text/plain", "Volume Down");
+    Serial.println("Switch Down");
+    irsend.sendNEC(0x807FA05F, 32);
+    server.send(200, "text/plain", "Switch Down");
   });
 
   server.on("/up", [](){
-    Serial.println("Surround Sound Up");
-    irsend.sendNEC(0x4BB640BF, 32);
-    server.send(200, "text/plain", "Volume Up");
+    Serial.println("Switch Up");
+    irsend.sendNEC(0x807F30CF, 32);
+    server.send(200, "text/plain", "Switch Up");
   });
 
-  server.on("/sspower", [](){
-    Serial.println("Surround Sound power");
-    irsend.sendNEC(0x4B36D32C, 32);
-    server.send(200, "text/plain", "Surround Sound Power");
+  server.on("/switchon", [](){
+    Serial.println("Switch on");
+    irsend.sendNEC(0x807F3AC5, 32);
+    server.send(200, "text/plain", "Switch Power");
+  });
+
+  server.on("/switchoff", [](){
+    Serial.println("Switch off");
+    irsend.sendNEC(0x807FF807, 32);
+    server.send(200, "text/plain", "Switch Power");
   });
 
   server.on("/sschannel1", [](){
     Serial.println("Surround Sound Channel 1");
-    irsend.sendNEC(0x4B3631CE, 32);
+    irsend.sendNEC(0x68DC1B9A, 32);
     server.send(200, "text/plain", "Surround Sound Channel 1");
   });
 
@@ -184,27 +241,27 @@ void setup(void){
 
   server.on("/tvpower", [](){
     Serial.println("TV power");
-    irsend.sendNEC(0x20DF10EF, 32);
+    irsend.sendNEC(0xA90, 12);
     server.send(200, "text/plain", "TV Power");
   });
 
   server.on("/tvsource", [](){
     Serial.println("TV Source");
-    irsend.sendNEC(0x20DFD02F, 32);
+    irsend.sendSony(0xA50, 12);
     server.send(200, "text/plain", "TV Source");
   });
 
-  server.on("/togglesource", [](){
-    Serial.println("TV Source");
-    irsend.sendNEC(0x20DFD02F, 32);
-    delay(DELAY_BETWEEN_COMMANDS);
-    irsend.sendNEC(0x20DFD02F, 32);
-    server.send(200, "text/plain", "TV Source");
-  });
+//  server.on("/togglesource", [](){
+//    Serial.println("TV Source");
+//    irsend.sendNEC(0x20DFD02F, 32);
+//    delay(DELAY_BETWEEN_COMMANDS);
+//    irsend.sendNEC(0x20DFD02F, 32);
+//    server.send(200, "text/plain", "TV Source");
+//  });
 
   server.on("/satpower", [](){
     Serial.println("Sat Power");
-    irsend.sendNEC(0xA25D7887, 32);
+    irsend.sendNEC(0x20E4CBF8, 102);
     server.send(200, "text/plain", "Sat Power");
   });
 
