@@ -3,6 +3,16 @@
 <html><head>
 
     <style>
+
+        div.title { 
+            text-align: center;
+            grid-column: 2;
+            grid-row: 1; 
+        }
+        .title > p {
+            color: white;
+        }
+        
         div.item1 { grid-area: header; }
         div.item2 { grid-area: power; }
         div.item3 { grid-area: misc; }
@@ -28,66 +38,176 @@
         }
 
         /* switcher styles */
-        div.poweron { grid-area: poweron; }
-        div.poweroff { grid-area: poweroff; }
-        div.one { grid-area: one; }
-        div.two { grid-area: two; }
-        div.three { grid-area: three; }
-        div.four { grid-area: four; }
-        div.five { grid-area: five; }
-        div.up { grid-area: up; }
-        div.down { grid-area: down; }
+        div.poweron { grid-column: 1;  grid-row: 1; }
+        div.poweroff { grid-column: 3;  grid-row: 1; }
+        div.one { grid-column: 1;  grid-row: 2; }
+        div.two { grid-column: 3;  grid-row: 2; }
+        div.three { grid-column: 2;  grid-row: 3; }
+        div.four { grid-column: 1;  grid-row: 4; }
+        div.five { grid-column: 3;  grid-row: 4; }
+        div.switcher-up { grid-column: 2;  grid-row: 5; }
+        div.switcher-down { grid-column: 2;  grid-row: 6; }
         .grid-container-switcher {
           display: grid;
-          grid-template:
+          /* grid-template:
             'poweroff . poweron'
             'one . two'
             '. three .'
             'four . five'
             '. up .'
-            '. down .';
-          grid-gap: 10px;
-          background-color: #2196F3;
+            '. down .'; */
+          /* grid-gap: 10px; */
+          background-color: rgb(122, 122, 122);
           padding: 10px;
         }
         
         .grid-container-switcher > div {
-          background-color: rgba(255, 255, 255, 0.8);
+          /* background-color: rgba(255, 255, 255, 0.8); */
           text-align: center;
           
           /* padding: 20px 0; */
           font-size: 30px;
         }
+
+        .grid-container-switcher > * > * > p {
+            color: white;
+        }
+
+        .grid-container-switcher > * > button {
+            position: relative;
+            top: 2em;
+            background-color: rgb(136, 136, 136);
+            min-width: 5em;
+            min-height: 5em;
+            border-radius: .5em;
+            box-shadow: 1px 1px;
+            /* width: 20%; */
+        
+        }
+        .grid-container-switcher > * > button:hover {
+            position: relative;
+            top: 2em;
+            background-color: rgb(136, 136, 136);
+            min-width: 5em;
+            min-height: 5em;
+            border-radius: .5em;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3)
+            /* width: 20%; */
+        
+        }
         
 
                 /* soundbar styles */
-        div.power { grid-area: power; }
-        div.menu { grid-area: menu; }
-        div.input { grid-area: input; }
-        div.up { grid-area: up; }
-        div.previous { grid-area: previous; }
-        div.play-pause { grid-area: play-pause; }
-        div.next { grid-area: next; }
-        div.down { grid-area: down; }
-        div.vol-up { grid-area: vol-up; }
-        div.mute { grid-area: mute; }
-        div.vol-down { grid-area: vol-down; }
+        div.power { grid-column: 2;  grid-row: 1;}
+        div.soundbar-up { grid-column: 2;  grid-row: 2;}
+        div.previous { grid-column: 1;  grid-row: 3;}
+        div.play-pause { grid-column: 2;  grid-row: 3;}
+        div.next { grid-column: 3;  grid-row: 3;}
+        div.soundbar-down { grid-column: 2;  grid-row: 4;}
+        div.vol-up { grid-column: 1;  grid-row: 5;}
+        div.mute { grid-column: 2;  grid-row: 5;}
+        div.vol-down { grid-column: 3;  grid-row: 5;}
         .grid-container-soundbar {
           display: grid;
-          grid-template:
+          /* grid-template:
             'input menu power'
             '. up .'
             'previous play-pause next'
             '. down .'
-            'vol-up mute vol-down';
-          grid-gap: 10px;
-          background-color: #3f4346;
-          padding: 10px;
-          width: 50%;
+            'vol-up mute vol-down'; */
+            /* grid-template-rows: auto auto auto; */
+            /* grid-template-columns: auto auto auto; */
+            grid-gap: 10px;
+            background-color: #3f4346;
+            padding: 10px;
+            width: 37em;
+            position: relative;
+            /* left: 25%; */
+            padding-top: 5%;
+            padding-bottom: 15%;
+            overflow: hidden;
+        }
+        
+        .grid-container-soundbar-input > .title {
+            text-align: center;
+            grid-column: 2;
+            grid-row: 1; 
+        }
+
+        div.aux-1 { grid-column: 1;  grid-row: 2;}
+        div.aux-2 { grid-column: 2;  grid-row: 2;}
+        div.optical { grid-column: 3;  grid-row: 2;}
+        div.hdmi { grid-column: 1;  grid-row: 3;}
+        div.hdmi-a { grid-column: 2;  grid-row: 3;}
+        div.usb { grid-column: 3;  grid-row: 3;}
+        div.bluetooth { grid-column: 2;  grid-row: 4;}
+        .grid-container-soundbar-input {
+          display: grid;
           position: relative;
-          left: 25%;
-          padding-top: 5%;
-          padding-bottom: 15%;
+          /* grid-template:
+            'input menu power'
+            '. up .'
+            'previous play-pause next'
+            '. down .'
+            'vol-up mute vol-down'; */
+            /* grid-template-rows: auto auto auto; */
+            /* grid-template-columns: auto auto auto; */
+            grid-gap: 10px;
+            background-color: #3f4346;
+            width: 17em;
+            float: left;
+            height: 32.8em;
+            overflow: hidden;
+            padding-right: .5em;
+        }
+
+        .grid-container-soundbar-menu > .title {
+            text-align: center;
+            grid-column: 2;
+            grid-row: 1; 
+        }
+
+        div.pair { grid-column: 2;  grid-row: 2;}
+        div.bass-p { grid-column: 1;  grid-row: 3;}
+        div.bass-m { grid-column: 3;  grid-row: 3;}
+        div.tremble-p { grid-column: 1;  grid-row: 4;}
+        div.tremble-m { grid-column: 3;  grid-row: 4;}
+        div.center-p { grid-column: 1;  grid-row: 5;}
+        div.center-m { grid-column: 3;  grid-row: 5;}
+        div.surround-p { grid-column: 1;  grid-row: 6;}
+        div.surround-m { grid-column: 3;  grid-row: 6;}
+        div.surround-power { grid-column: 2;  grid-row: 6;}
+        div.surround-b-p { grid-column: 1;  grid-row: 7;}
+        div.surround-b-m { grid-column: 3;  grid-row: 7;}
+        div.subwoofer-p { grid-column: 1;  grid-row: 8;}
+        div.subwoofer-m { grid-column: 3;  grid-row: 8;}
+        div.av-d-p { grid-column: 1;  grid-row: 9;}
+        div.av-d-m { grid-column: 3;  grid-row: 9;}
+        div.vz-tv-r-on { grid-column: 1;  grid-row: 10;}
+        div.vz-tv-r-off { grid-column: 3;  grid-row: 10;}
+        div.eco-on { grid-column: 1;  grid-row: 11;}
+        div.eco-off { grid-column: 3;  grid-row: 11;}
+        div.reset { grid-column: 1;  grid-row: 12;}
+        div.sp-test { grid-column: 3;  grid-row: 12;}
+        .grid-container-soundbar-menu {
+          display: grid;
+          position: relative;
+          /* grid-template:
+            'input menu power'
+            '. up .'
+            'previous play-pause next'
+            '. down .'
+            'vol-up mute vol-down'; */
+            /* grid-template-rows: auto auto auto; */
+            /* grid-template-columns: auto auto auto; */
+            grid-gap: 10px;
+            background-color: #3f4346;
+            width: 20em;
+            float: right;
+            height: 32.8em;
+            right: -0.2em;
+            overflow: scroll;
+            padding-left: .5em;
         }
         
         .grid-container-soundbar > div {
@@ -97,6 +217,33 @@
           /* border-style: solid; */
           /* padding: 20px 0; */
           font-size: 30px;
+        }
+
+        .grid-container-soundbar > * > button,
+        .grid-container-soundbar-input > * > button,
+        .grid-container-soundbar-menu > * > button {
+            background-color: black;
+            min-width:6em;
+            box-shadow: 1px 1px;
+            /* width: 20%; */
+        
+        }
+
+        .grid-container-soundbar > * > button:hover,
+        .grid-container-soundbar-input > * > button:hover,
+        .grid-container-soundbar-menu > * > button:hover {
+            background-color: black;
+            min-width:6em;
+            box-shadow: 1px 1px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3)
+            /* width: 20%; */
+        
+        }
+
+        .grid-container-soundbar > * > * > p,
+        .grid-container-soundbar-input > * > * > p,
+        .grid-container-soundbar-menu > * > * > p {
+            color: white;
         }
 
         .tabcontent {
@@ -116,12 +263,12 @@
   </head>
   <body>
     <div class="container-fluid">
-        <div class="tab" style="text-align: center;padding-bottom: 1%">
+        <div class="tab" style="text-align: center;padding-bottom: 1%; position: fixed; padding-top: 1em; left: 50%; transform: translate(-50%,-50%);">
             <button class="tablinks" onclick="openCity(event, 'Switcher')">Switcher</button>
             <button class="tablinks" onclick="openCity(event, 'Sony')" id="defaultOpen">Sony</button>
             <button class="tablinks" onclick="openCity(event, 'Soundbar')">Soundbar</button>
         </div>
-        <div id="Sony" class="active tabcontent">
+        <div id="Sony" class="active tabcontent" style="width: 38em; padding-top: 2em;">
             <div class="grid-container-sony" >
                 <div class="item1" >
                     <div>
@@ -199,152 +346,207 @@
                 </div>
             </div>
         </div>
-        <div id="Switcher" class="tabcontent">
-            <div class="grid-container-switcher" >
+        <div id="Switcher" class="tabcontent" style="width: 38em; padding-top: 2em;">
+            <div class="grid-container-switcher" style="height: 45.1em;" >
                 <div class="poweroff" >
-                    <div class="row" style="height:100%">
-                        <div class="" style="">
-                            <button id="tvpower" type="button" class="btn btn-default" style="" onclick="makeAjaxCall(&quot;tvpower&quot;)">off</button>
-                        </div>
-                    </div>
+                    <!-- <div class="row" style="height:100%"> -->
+                        <!-- <div class="" style=""> -->
+                            <button id="tvpower" type="button" class="btn btn-default" style="border-radius: 50%; background-color: green;" onclick="makeAjaxCall(&quot;tvpower&quot;))"><p>on</p></button>
+                        <!-- </div> -->
+                    <!-- </div> -->
                 </div>
                 <div class="poweron" >
-                    <div class="row" style="height:100%">
-                        <div class="" style="">
-                            <button id="tvpower" type="button" class="btn btn-default" style="" onclick="makeAjaxCall(&quot;tvpower&quot;)">on</button>
-                        </div>
-                    </div>  
+                    <!-- <div class="row" style="height:100%"> -->
+                        <!-- <div class="" style=""> -->
+                            <button id="tvpower" type="button" class="btn btn-default" style="border-radius: 50%; background-color: red;" onclick="makeAjaxCall(&quot;tvpower&quot;))"><p>off</p></button>
+                        <!-- </div> -->
+                    <!-- </div>   -->
                 </div>
-                <div class="one" >
-                    <div class="row" style="height:100%">
-                        <div class="" style="">
-                            <button id="tvpower" type="button" class="btn btn-default" style="" onclick="makeAjaxCall(&quot;tvpower&quot;)">1</button>
-                        </div>
-                    </div>
+                <div class="one" style="border-left: solid; border-top: solid; border-right: solid; border-top-right-radius: 1em; border-top-left-radius: 1em;">
+                    <!-- <div class="row" style="height:100%"> -->
+                        <!-- <div class="" style=""> -->
+                            <button id="tvpower" type="button" class="btn btn-default" style="" onclick="makeAjaxCall(&quot;tvpower&quot;))"><p>1</p></button>
+                        <!-- </div> -->
+                    <!-- </div> -->
                 </div>
-                <div class="two" >
-                    <div class="row" style="height:100%">
-                        <div class="" style="">
-                            <button id="tvpower" type="button" class="btn btn-default" style="" onclick="makeAjaxCall(&quot;tvpower&quot;)">2</button>
-                        </div>
-                    </div>
+                <div class="two" style="border-left: solid; border-top: solid; border-right: solid; border-top-right-radius: 1em; border-top-left-radius: 1em;">
+                    <!-- <div class="row" style="height:100%"> -->
+                        <!-- <div class="" style=""> -->
+                            <button id="tvpower" type="button" class="btn btn-default" style="" onclick="makeAjaxCall(&quot;tvpower&quot;))"><p>2</p></button>
+                        <!-- </div> -->
+                    <!-- </div> -->
                 </div>
-                <div class="three" >
-                    <div class="row" style="height:100%">
-                        <div class="" style="">
-                            <button id="tvpower" type="button" class="btn btn-default" style="" onclick="makeAjaxCall(&quot;tvpower&quot;)">3</button>
-                        </div>
-                    </div>
+                <div style="grid-column: 1; grid-row: 3; border-left: solid;">
                 </div>
-                <div class="four" >
-                    <div class="row" style="height:100%">
-                        <div class="" style="">
-                            <button id="tvpower" type="button" class="btn btn-default" style="" onclick="makeAjaxCall(&quot;tvpower&quot;)">4</button>
-                        </div>
-                    </div>
+                <div class="three" style="border-top: solid; border-bottom: solid;">
+                    <!-- <div class="row" style="height:100%"> -->
+                        <!-- <div class="" style=""> -->
+                            <button id="tvpower" type="button" class="btn btn-default" style="" onclick="makeAjaxCall(&quot;tvpower&quot;))"><p>3</p></button>
+                        <!-- </div> -->
+                    <!-- </div> -->
                 </div>
-                <div class="five" >
-                    <div class="row" style="height:100%">
-                        <div class="" style="">
-                            <button id="tvpower" type="button" class="btn btn-default" style="" onclick="makeAjaxCall(&quot;tvpower&quot;)">5</button>
-                        </div>
-                    </div>
+                <div style="grid-column: 3; grid-row: 3; border-right: solid;">
                 </div>
-                <div class="up" >
-                    <div class="row" style="height:100%">
-                        <div class="" style="">
-                            <button id="tvpower" type="button" class="btn btn-default" style="" onclick="makeAjaxCall(&quot;tvpower&quot;)">^</button>
-                        </div>
-                    </div>
+                <div class="four" style="border-left: solid; border-bottom: solid; border-right: solid; border-bottom-right-radius: 1em; border-bottom-left-radius: 1em;">
+                    <!-- <div class="row" style="height:100%"> -->
+                        <!-- <div class="" style=""> -->
+                            <button id="tvpower" type="button" class="btn btn-default" style="" onclick="makeAjaxCall(&quot;tvpower&quot;))"><p>4</p></button>
+                        <!-- </div> -->
+                    <!-- </div> -->
                 </div>
-                <div class="down" >
-                    <div class="row" style="height:100%">
-                        <div class="" style="">
-                            <button id="tvpower" type="button" class="btn btn-default" style="" onclick="makeAjaxCall(&quot;tvpower&quot;)">v</button>
-                        </div>
-                    </div>
+                <div class="five" style="border-left: solid; border-bottom: solid; border-right: solid; border-bottom-right-radius: 1em; border-bottom-left-radius: 1em;">
+                    <!-- <div class="row" style="height:100%"> -->
+                        <!-- <div class="" style=""> -->
+                            <button id="tvpower" type="button" class="btn btn-default" style="" onclick="makeAjaxCall(&quot;tvpower&quot;))"><p>5</p></button>
+                        <!-- </div> -->
+                    <!-- </div> -->
+                </div>
+                <div class="switcher-up" >
+                    <!-- <div class="row" style="height:100%"> -->
+                        <!-- <div class="" style=""> -->
+                            <button id="tvpower" type="button" class="btn btn-default" style="" onclick="makeAjaxCall(&quot;tvpower&quot;))"><p>^</p></button>
+                        <!-- </div> -->
+                    <!-- </div> -->
+                </div>
+                <div class="switcher-down" >
+                    <!-- <div class="row" style="height:100%"> -->
+                        <!-- <div class="" style=""> -->
+                            <button id="tvpower" type="button" class="btn btn-default" style="" onclick="makeAjaxCall(&quot;tvpower&quot;))"><p>v</p></button>
+                        <!-- </div> -->
+                    <!-- </div> -->
                 </div>
             </div>
         </div>
-        <div id="Soundbar" class="tabcontent">
-            <div class="grid-container-soundbar" >
-                <div class="input" >
-                    <div class="" style="height:100%">
-                        <div class="" style="border-radius:2px">
-                            <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)">input</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="menu" >
-                    <div class="row" style="height:100%">
-                        <div class="" style="">
-                            <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)">menu</button>
-                        </div>
-                    </div>  
-                </div>
+        <div id="Soundbar" class="tabcontent" style="width: 38em; padding-top: 2em;">
+            <div class="grid-container-soundbar" style="overflow: hidden;">
                 <div class="power" >
-                    <div class="row" style="height:100%">
-                        <div class="" style="">
-                            <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)">power</button>
-                        </div>
-                    </div>
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>power</p></button>
                 </div>
-                <div class="up" style="padding-top: 30%;" >
-                    <div class="row" style="height:100%">
-                        <div class="" style="">
-                            <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)">&#8679</button>
-                        </div>
-                    </div>
+                <div class="soundbar-up" style="padding-top: 30%;" >
+                    <!-- <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>&#8679</p></button> -->
                 </div>
                 <div class="previous" >
-                    <div class="row" style="height:100%">
-                        <div class="" style="">
-                            <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)">&#8678</button>
-                            <!-- <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)">&#x23EA</button> -->
-                        </div>
-                    </div>
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>&#8678</p></button>
                 </div>
                 <div class="play-pause" >
-                    <div class="row" style="height:100%">
-                        <div class="" style="">
-                            <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)">&#9658/&#10074&#10074</button>
-                        </div>
-                    </div>
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>&#9658/&#10074&#10074</p></button>
                 </div>
                 <div class="next" >
-                    <div class="row" style="height:100%">
-                        <div class="" style="">
-                            <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)">&#8680</button>
-                        </div>
-                    </div>
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>&#8680</p></button>
                 </div>
-                <div class="down" style="padding-bottom: 30%;">
-                    <div class="row" style="height:100%">
-                        <div class="" style="">
-                            <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)">&#8681</button>
-                        </div>
-                    </div>
+                <div class="soundbar-down" style="padding-bottom: 30%;">
+                    <!-- <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>&#8681</p></button> -->
                 </div>
                 <div class="vol-down" >
-                    <div class="row" style="height:100%">
-                        <div class="" style="">
-                            <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)">vol -</button>
-                        </div>
-                    </div>
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>vol -</p></button>
+                        
                 </div>
                 <div class="mute" >
-                    <div class="row" style="height:100%">
-                        <div class="" style="">
-                            <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)">mute</button>
-                        </div>
-                    </div>
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>mute</p></button>
+
                 </div>
                 <div class="vol-up" >
-                    <div class="row" style="height:100%">
-                        <div class="" style="">
-                            <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)">vol +</button>
-                        </div>
-                    </div>
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>vol +</p></button>
+                </div>
+            </div>
+            <!-- input grid -->
+            <div class="grid-container-soundbar-input" >
+                <div class="title">
+                    <p>Input</p>
+                </div>
+                <div class="aux-1" >
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>Aux 1</p></button>
+                </div>
+                <div class="aux-2" >
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>Aux 2</p></button>
+                </div>
+                <div class="hdmi" >
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>HDMI</p></button>
+                </div>
+                <div class="hdmi-a" >
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>HDMI-ARC</p></button>
+                </div>
+                <div class="usb" >
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>USB</p></button>
+                </div>
+                <div class="bluetooth" >
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>Bluetooth</p></button>
+                </div>
+                <div class="optical" >
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>Optical</p></button>
+                </div>
+            </div>
+            <!-- menu grid -->
+            <div class="grid-container-soundbar-menu" >
+                <div class="title">
+                    <p>Menu</p>
+                </div>
+                <div class="pair" >
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>pair</p></button>
+                </div>
+                <div class="bass-p" >
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>bass +</p></button>
+                </div>
+                <div class="bass-m" >
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>bass -</p></button>
+                </div>
+                <div class="tremble-p" >
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>tremble +</p></button>
+                </div>
+                <div class="tremble-m" >
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>tremble -</p></button>
+                </div>
+                <div class="center-p" >
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>center +</p></button>
+                </div>
+                <div class="center-m" >
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>center -</p></button>
+                </div>
+                <div class="surround-p" >
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>surround +</p></button>
+                </div>
+                <div class="surround-m" >
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>surround -</p></button>
+                </div>
+                <div class="surround-power" >
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium; min-width: 3em;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>on</p></button>
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium; min-width: 3em;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>off</p></button>
+                </div>
+                <div class="surround-b-p" >
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>surround balance +</p></button>
+                </div>
+                <div class="surround-b-m" >
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>surround balance -</p></button>
+                </div>
+                <div class="subwoofer-p" >
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>subwoofer +</p></button>
+                </div>
+                <div class="subwoofer-m" >
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>wubwoofer -</p></button>
+                </div>
+                <div class="av-d-p" >
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>av delay +</p></button>
+                </div>
+                <div class="av-d-m" >
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>av delay -</p></button>
+                </div>
+                <div class="vz-tv-r-on" >
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>VZ TV Remote on</p></button>
+                </div>
+                <div class="vz-tv-r-off" >
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>VZ TV Remote off</p></button>
+                </div>
+                <div class="eco-on" >
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>ECO on</p></button>
+                </div>
+                <div class="eco-off" >
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>ECO off</p></button>
+                </div>
+                <div class="reset" >
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>reset</p></button>
+                </div>
+                <div class="sp-test" >
+                    <button id="tvpower" type="button" class="btn btn-default" style="border-style: solid; border-width: medium;" onclick="makeAjaxCall(&quot;tvpower&quot;)"><p>speaker test</p></button>
                 </div>
             </div>
         </div>
